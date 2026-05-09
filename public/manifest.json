@@ -1,0 +1,18 @@
+{
+  "name": "سوق اليمن",
+  "short_name": "سوق اليمن",
+  "description": "Kleinanzeigen fuer den Jemen",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f9fc",
+  "theme_color": "#2878d8",
+  "dir": "rtl",
+  "lang": "ar",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
