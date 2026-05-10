@@ -47,6 +47,16 @@ In Supabase:
 
 - `Authentication -> Providers`: Email aktivieren.
 - Spaeter Telefon/OTP aktivieren, falls ein SMS-Provider angebunden wird.
+- `Authentication -> Providers -> Email`: Confirm email aktivieren.
+- `Authentication -> Email Templates -> Confirm signup`: den numerischen Code anzeigen, zum Beispiel:
+
+```html
+<h2>Yemen Marketplace verification code</h2>
+<p>Enter this code in the app:</p>
+<h1>{{ .Token }}</h1>
+```
+
+Ohne `{{ .Token }}` sendet Supabase oft nur einen Link. Fuer diese App soll der Nutzer die Zahl aus der E-Mail in der App eingeben.
 - `Authentication -> URL Configuration`:
   - Site URL: `http://127.0.0.1:3000`
   - Redirect URLs: `http://127.0.0.1:3000`, `http://localhost:3000`

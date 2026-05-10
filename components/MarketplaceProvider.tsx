@@ -6,9 +6,11 @@ import { listings as seedListings, type Listing } from "@/app/data";
 
 type User = {
   name: string;
+  email?: string;
   phone: string;
   city: string;
   verified: boolean;
+  accessToken?: string;
 };
 
 type Message = {
@@ -59,14 +61,7 @@ type MarketplaceContextValue = {
 };
 
 const MarketplaceContext = createContext<MarketplaceContextValue | null>(null);
-const STORAGE_VERSION = 2;
-
-const fallbackUser: User = {
-  name: "محمد السناني",
-  phone: "967700123456",
-  city: "صنعاء",
-  verified: true
-};
+const STORAGE_VERSION = 3;
 
 export function MarketplaceProvider({ children }: { children: React.ReactNode }) {
   const [listings, setListings] = useState<Listing[]>(seedListings);
@@ -76,7 +71,7 @@ export function MarketplaceProvider({ children }: { children: React.ReactNode })
     { id: "m1", listingId: "solar-01", from: "seller", body: "النظام متوفر ويمكن معاينته اليوم.", at: "12:40" },
     { id: "m2", listingId: "car-01", from: "seller", body: "السيارة موجودة في كريتر.", at: "أمس" }
   ]);
-  const [user, setUser] = useState<User | null>(fallbackUser);
+  const [user, setUser] = useState<User | null>(null);
   const [language, setLanguageState] = useState<"ar" | "en">("ar");
   const [darkMode, setDarkMode] = useState(false);
 
@@ -102,7 +97,7 @@ export function MarketplaceProvider({ children }: { children: React.ReactNode })
       setFavorites(parsed.favorites ?? []);
       setReports(parsed.reports ?? []);
       setMessages(parsed.messages?.length ? parsed.messages : messages);
-      setUser(parsed.user ?? fallbackUser);
+      setUser(parsed.user ?? null);
       setLanguageState(parsed.language ?? "ar");
       setDarkMode(Boolean(parsed.darkMode));
     } catch {

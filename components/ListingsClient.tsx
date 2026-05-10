@@ -10,7 +10,7 @@ import { Icon } from "@/components/Icons";
 import { useMarketplace } from "@/components/MarketplaceProvider";
 
 export function ListingsClient() {
-  const { listings, addListing, language } = useMarketplace();
+  const { listings, addListing, language, user } = useMarketplace();
   const [query, setQuery] = useState("");
   const [city, setCity] = useState("all");
   const [category, setCategory] = useState("all");
@@ -56,6 +56,10 @@ export function ListingsClient() {
 
   function submitListing(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (!user) {
+      setToast("يجب إنشاء حساب وتأكيد البريد الإلكتروني قبل نشر إعلان.");
+      return;
+    }
     if (!form.title || !form.price || !form.description) {
       setToast("يرجى تعبئة العنوان والسعر والوصف.");
       return;
@@ -129,6 +133,11 @@ export function ListingsClient() {
 
           <aside id="new" className="h-fit rounded-lg border border-slate-200 bg-white p-5 shadow-soft dark:border-slate-800 dark:bg-slate-900">
             <h2 className="text-xl font-black text-slate-950 dark:text-white">إنشاء إعلان</h2>
+            {!user ? (
+              <div className="mt-4 rounded-lg border border-brand-100 bg-brand-50 p-3 text-sm font-bold text-brand-700 dark:border-slate-800 dark:bg-slate-950 dark:text-brand-100">
+                تحتاج إلى حساب مؤكد بالبريد الإلكتروني قبل نشر إعلان.
+              </div>
+            ) : null}
             <form onSubmit={submitListing} className="mt-4 space-y-3">
               <input value={form.title} onChange={(event) => setForm({ ...form, title: event.target.value })} className="min-h-12 w-full rounded-lg border border-slate-200 bg-transparent px-3 dark:border-slate-700" placeholder="عنوان الإعلان" />
               <select value={form.category} onChange={(event) => setForm({ ...form, category: event.target.value })} className="min-h-12 w-full rounded-lg border border-slate-200 bg-white px-3 dark:border-slate-700 dark:bg-slate-950">

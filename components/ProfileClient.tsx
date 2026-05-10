@@ -25,9 +25,10 @@ export function ProfileClient() {
                 </div>
                 <div>
                   <h1 className="text-2xl font-black text-slate-950 dark:text-white">{user?.name ?? "زائر"}</h1>
+                  {user?.email ? <p className="text-sm text-slate-500">{user.email}</p> : null}
                   <p className="flex items-center gap-1 text-sm text-slate-500">
                     {user?.verified ? <Icon name="shield" className="h-4 w-4 text-brand-600" /> : null}
-                    {user?.verified ? "بائع موثق" : "سجل الدخول للتوثيق"}
+                    {user?.verified ? "بريد مؤكد" : "أنشئ حسابا وأكد البريد"}
                   </p>
                 </div>
               </div>
