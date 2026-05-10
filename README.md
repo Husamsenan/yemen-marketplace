@@ -31,6 +31,22 @@ Die vollstaendige Produkt- und Systemarchitektur liegt in [`docs/product-archite
 - Auth: Supabase Auth mit OTP per Telefon oder E-Mail
 - PWA: `manifest.json`, spaeter Service Worker fuer Offline-Caching
 
+## Backend einrichten
+
+Die Supabase-Datenbank, RLS Policies, Storage Buckets und Seed-Daten liegen in `supabase/`.
+
+Setup-Anleitung:
+
+```txt
+docs/supabase-setup.md
+```
+
+Wichtige Dateien:
+
+- `supabase/migrations/20260510183000_initial_schema.sql`
+- `supabase/seed.sql`
+- `.env.example`
+
 ## Datenbankstruktur
 
 ```sql
