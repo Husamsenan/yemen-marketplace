@@ -2,6 +2,8 @@
 
 Modern mobile-first Kleinanzeigen-Plattform fuer den Jemen mit arabischem RTL-Layout, englischer Zweitsprache und Startup-tauglicher Architektur.
 
+Die vollstaendige Produkt- und Systemarchitektur liegt in [`docs/product-architecture.md`](docs/product-architecture.md).
+
 ## Screens
 
 - Landingpage: `/`
@@ -9,10 +11,20 @@ Modern mobile-first Kleinanzeigen-Plattform fuer den Jemen mit arabischem RTL-La
 - Detailseite: `/listings/solar-01`, `/listings/car-01`, `/listings/phone-01`, `/listings/home-01`
 - Nutzerprofil mit Chat-Vorschau: `/profile`
 - Admin Dashboard: `/admin`
+- Mobile App: `apps/mobile`
+
+## Produktumfang
+
+- Mobile App: Flutter fuer Android und iOS
+- Website: Next.js + Tailwind CSS, SEO und PWA
+- Backend: Supabase, PostgreSQL, Auth, Realtime, Storage und Push-Integration
+- Kategorien: Autos, Immobilien, Handys, Elektronik, Jobs, Moebel, Solarprodukte und Dienstleistungen
+- Kernfunktionen: Anzeigen, Suche, Filter, Favoriten, Chat, WhatsApp-Kontakt, Reports, Premium-Anzeigen und Admin-Moderation
 
 ## Stack
 
 - Frontend: Next.js App Router, TypeScript, Tailwind CSS
+- Mobile: Flutter App in `apps/mobile`
 - Backend-Empfehlung: Supabase
 - Storage: Supabase Storage mit clientseitiger Bildkompression zu WebP
 - Realtime: Supabase Realtime fuer Chat und Admin-Moderation
@@ -152,3 +164,19 @@ PATCH  /api/admin/listings/:id/moderate
 - Supabase Storage Image Transformations oder CDN.
 - Offline-freundliche PWA fuer zuletzt gesehene Anzeigen und Entwuerfe.
 - Edge caching fuer Kategorien, Staedte und oeffentliche Listing-Feeds.
+
+## Lokal testen
+
+Website:
+
+```bash
+npm run dev
+```
+
+Mobile App:
+
+```bash
+cd apps/mobile
+flutter pub get
+flutter run
+```

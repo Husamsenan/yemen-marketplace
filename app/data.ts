@@ -25,7 +25,8 @@ export const categories = [
   { name: "وظائف", en: "Jobs", icon: "💼" },
   { name: "إلكترونيات", en: "Electronics", icon: "💻" },
   { name: "طاقة شمسية", en: "Solar", icon: "☀️" },
-  { name: "أثاث", en: "Furniture", icon: "🪑" }
+  { name: "أثاث", en: "Furniture", icon: "🪑" },
+  { name: "خدمات", en: "Services", icon: "🛠️" }
 ];
 
 export const listings: Listing[] = [
